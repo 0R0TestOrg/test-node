@@ -1,5 +1,6 @@
 import * as process from 'node:process';
-import { scanWithCallback } from 'sonarqube-scanner';
+import pkg from 'sonarqube-scanner';
+const { scanWithCallback } = pkg;
 
 scanWithCallback({
     options: {
