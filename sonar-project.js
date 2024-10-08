@@ -1,7 +1,7 @@
 import * as process from 'node:process';
-import scanner from 'sonarqube-scanner';
+import { scanWithCallback } from 'sonarqube-scanner';
 
-scanner({
+scanWithCallback({
     options: {
         'sonar.projectName': 'node-test',
         'sonar.projectDescription': 'Test app in Node',
