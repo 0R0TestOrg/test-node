@@ -1,7 +1,16 @@
-const process = require('node:process');
-const scanWithCallback = require('sonarqube-scanner').default;
+import process from 'node:process';
+import { scan } from 'sonarqube-scanner';
+import { program } from 'commander';
 
-scanWithCallback({
+program
+    .option('-D, --define <property=value...>', 'Define property')
+    .option('-X, --debug', 'Produce execution debug output');
+
+function parseArgs() {
+    return program.parse().opts();
+}
+
+scan({
     options: {
         'sonar.projectName': 'node-test',
         'sonar.projectDescription': 'Test app in Node',
@@ -23,6 +32,8 @@ scanWithCallback({
             '**/__mocks__/**/*',
         ].join(', '),
     },
+}, parseArgs()).then(() => {
+
 }, (error) => {
     if (error) {
         console.error(error);
