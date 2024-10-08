@@ -3,8 +3,18 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+function test() {
+    const number = Math.random() * 3;
+    if (number % 2 === 0) {
+        console.log('odd');
+    } else {
+        console.log('even');
+    }
+}
+
 function App() {
   const [count, setCount] = useState(0)
+    test();
 
   return (
     <>
