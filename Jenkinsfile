@@ -28,7 +28,9 @@ pipeline {
                     if (env.BRANCH_NAME.startsWith('PR-')) {
                         sonarParams = "-Dsonar.pullrequest.key=${env.CHANGE_ID} -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} -Dsonar.pullrequest.base=${env.CHANGE_TARGET}"
                     }
-                    sh "pnpm sonar ${sonarParams}"
+                    withSonarQubeEnv('SonarCloud') {
+                        sh "pnpm sonar ${sonarParams}"
+                    }
                     timeout(time: 2, unit: 'MINUTES') {
                         WaitForQualityGateStep waitForQualityGateStep = waitForQualityGate()
                         if (waitForQualityGateStep.status != 'OK') {
