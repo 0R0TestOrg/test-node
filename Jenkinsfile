@@ -30,11 +30,11 @@ pipeline {
                     }
                     withSonarQubeEnv('SonarCloud') {
                         sh "pnpm sonar ${sonarParams}"
-                    }
-                    timeout(time: 2, unit: 'MINUTES') {
-                        WaitForQualityGateStep waitForQualityGateStep = waitForQualityGate()
-                        if (waitForQualityGateStep.status != 'OK') {
-                            error "Pipeline aborted due to quality gate failure: ${waitForQualityGateStep.status}"
+                        timeout(time: 2, unit: 'MINUTES') {
+                            WaitForQualityGateStep waitForQualityGateStep = waitForQualityGate()
+                            if (waitForQualityGateStep.status != 'OK') {
+                                error "Pipeline aborted due to quality gate failure: ${waitForQualityGateStep.status}"
+                            }
                         }
                     }
                 }
