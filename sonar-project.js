@@ -1,5 +1,14 @@
-import * as process from 'node:process';
+import process from 'node:process';
 import { scan } from 'sonarqube-scanner';
+import { program } from 'commander';
+
+program
+    .option('-D, --define <property=value...>', 'Define property')
+    .option('-X, --debug', 'Produce execution debug output');
+
+function parseArgs() {
+    return program.parse().opts();
+}
 
 scan({
     options: {
@@ -23,9 +32,11 @@ scan({
             '**/__mocks__/**/*',
         ].join(', '),
     },
-}).then(() => {
-    console.log("OK");
+}, parseArgs()).then(() => {
+
 }, (error) => {
-    console.error(error);
-    process.exit(1);
+    if (error) {
+        console.error(error);
+        process.exit(1);
+    }
 });
