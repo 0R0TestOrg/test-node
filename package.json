@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "sonar": "node sonar-project.js"
+    "sonar": "node sonar-project.cjs"
   },
   "dependencies": {
     "react": "^18.3.1",

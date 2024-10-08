@@ -1,5 +1,4 @@
-import * as process from 'node:process';
-
+const process = require('node:process');
 const scanWithCallback = require('sonarqube-scanner').default;
 
 scanWithCallback({
