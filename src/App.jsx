@@ -5,6 +5,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+    if (Math.random() * 3 === 5) {
+        console.log('hi')
+    }
 
   return (
     <>
