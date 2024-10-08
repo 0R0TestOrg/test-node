@@ -37,6 +37,7 @@ pipeline {
         stage('Wait for Sonar') {
             steps {
                 script {
+                    sleep 5
                     timeout(time: 2, unit: 'MINUTES') {
                         def waitForQualityGateStep = waitForQualityGate()
                         if (waitForQualityGateStep.status != 'OK') {
