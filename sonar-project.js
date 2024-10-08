@@ -1,6 +1,6 @@
-import scanner from 'sonarqube-scanner';
+import { scan } from 'sonarqube-scanner';
 
-scanner({
+scan({
     options: {
         'sonar.projectName': 'node-test',
         'sonar.projectDescription': 'Test app in Node',
@@ -21,5 +21,8 @@ scanner({
             '**/__mocks__/**/*',
         ].join(', '),
     },
-}, () => {
+}).then(() => {
+    console.log("OK")
+}, (error) => {
+    console.error(error)
 });
