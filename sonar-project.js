@@ -1,7 +1,7 @@
 import * as process from 'node:process';
-import { scan } from 'sonarqube-scanner';
+import scanner from 'sonarqube-scanner';
 
-scan({
+scanner({
     options: {
         'sonar.projectName': 'node-test',
         'sonar.projectDescription': 'Test app in Node',
@@ -23,8 +23,6 @@ scan({
             '**/__mocks__/**/*',
         ].join(', '),
     },
-}).then(() => {
-    console.log("OK");
 }, (error) => {
     console.error(error);
     process.exit(1);
