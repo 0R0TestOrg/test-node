@@ -1,6 +1,6 @@
 import * as process from 'node:process';
-import pkg from 'sonarqube-scanner';
-const { scanWithCallback } = pkg;
+
+const scanWithCallback = require('sonarqube-scanner').default;
 
 scanWithCallback({
     options: {
