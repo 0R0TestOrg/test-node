@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                'pnpm install'
+                sh 'pnpm install'
             }
         }
         stage('Build') {
