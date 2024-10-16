@@ -30,7 +30,7 @@ pipeline {
                     }
                     withSonarQubeEnv('SonarCloud') {
                         sh 'env'
-                        sh "pnpm sonar ${sonarParams}"
+                        sh "pnpm sonar ${sonarParams} -X"
                     }
                 }
             }
