@@ -29,6 +29,7 @@ pipeline {
                         sonarParams = "-Dsonar.pullrequest.key=${env.CHANGE_ID} -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} -Dsonar.pullrequest.base=${env.CHANGE_TARGET}"
                     }
                     withSonarQubeEnv('SonarCloud') {
+                        sh 'env'
                         sh "pnpm sonar ${sonarParams}"
                     }
                 }
